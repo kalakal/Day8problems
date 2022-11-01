@@ -8,19 +8,20 @@ namespace Day8Problems
         static void Main(string[] args)
         {
             EmpCheack emp = new EmpCheack();
-            emp.EmpWage();
+            int totalempWage = emp.EmpWage();
+            Console.WriteLine("Total Emp Wage=" + totalempWage);
         }
+
     }
     public class EmpCheack
     {
-
         public const int isPartTime = 1;
         public const int isFullTime = 2;
         public const int empRatePerHr = 20;
         public const int noOfWorkingDays = 2;
         public const int maxHrsInMonth = 10;
 
-        public void EmpWage()
+        public int EmpWage()
         {
             int empHr = 0, totalEmpHrs = 0, totalWorkingDays = 0;
             while (totalEmpHrs <= maxHrsInMonth && totalWorkingDays < noOfWorkingDays)
@@ -39,13 +40,13 @@ namespace Day8Problems
                     default:
                         empHr = 0;
                         break;
-
                 }
                 totalEmpHrs = totalEmpHrs + empHr;
                 Console.WriteLine("Days=" + totalWorkingDays + "Emp Hrs=" + empHr);
             }
             int totalEmpWage = totalEmpHrs * empRatePerHr;
-            Console.WriteLine("Total Emp Wage=" + totalEmpWage);
+
+            return totalEmpWage;
         }
     }
 
