@@ -2,40 +2,43 @@
 
 namespace Day8Problems
 {
+
+
     internal class Program
     {
         static void Main(string[] args)
         {
-            EmpCheack emp = new EmpCheack();
-            emp.EmpWage();
+            Empcheack e = new Empcheack();
+            e.EmpWage();
         }
     }
 
-    public class EmpCheack
+    public class Empcheack
     {
-        int isPartTime = 1;
-        int isFullTime = 2;
-        int empRatePerHr = 20;
-        int empHr = 0;
-        int empWage = 0;
+        public const int isPartTime = 1;
+        public const int isFullTime = 2;
+        public const int empRatePerHr = 20;
 
         public void EmpWage()
         {
+            int empHr = 0;
+            int empWage = 0;
             Random random = new Random();
             int empCheck = random.Next(0, 3);
-            if (empCheck == isPartTime)
+            switch (empCheck)
             {
-                empHr = 4;
-            }
-            else if (empCheck == isFullTime)
-            {
-                empHr = 8;
-            }
-            else
-            {
-                empHr = 0;
+                case isPartTime:
+                    empHr = 4;
+                    break;
+                case isFullTime:
+                    empHr = 8;
+                    break;
+                default:
+                    empHr = 0;
+                    break;
             }
             empWage = empHr * empRatePerHr;
+
             Console.WriteLine("EmpWage=" + empWage);
         }
     }
